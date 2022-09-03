@@ -1,0 +1,73 @@
+[package]
+name = "node-template"
+version = "4.0.0-dev"
+description = "A fresh FRAME-based Substrate node, ready for hacking."
+authors = ["Substrate DevHub <https://github.com/substrate-developer-hub>"]
+homepage = "https://substrate.io/"
+edition = "2021"
+license = "Unlicense"
+publish = false
+repository = "https://github.com/substrate-developer-hub/substrate-node-template/"
+build = "build.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[[bin]]
+name = "node-template"
+
+[dependencies]
+clap = { version = "3.1.18", features = ["derive"] }
+
+sc-cli = { version = "0.10.0-dev",features = ["wasmtime"] }
+sp-core = "6.0.0"
+sc-executor = { version = "0.10.0-dev", features = ["wasmtime"] }
+sc-service = { version = "0.10.0-dev", features = ["wasmtime"] }
+sc-telemetry = "4.0.0-dev"
+sc-keystore = "4.0.0-dev"
+sc-transaction-pool =  "4.0.0-dev" 
+sc-transaction-pool-api = "4.0.0-dev" 
+sc-consensus-aura = "0.10.0-dev" 
+sp-consensus-aura = "0.10.0-dev" 
+sp-consensus = "0.10.0-dev" 
+sc-consensus = "0.10.0-dev" 
+sc-finality-grandpa = "0.10.0-dev" 
+sp-finality-grandpa = "4.0.0-dev" 
+sc-client-api = "4.0.0-dev"
+sp-runtime = "6.0.0"
+sp-timestamp = "4.0.0-dev"
+sp-inherents = "4.0.0-dev"
+sp-keyring = "6.0.0"
+frame-system = "4.0.0-dev"
+pallet-transaction-payment = "4.0.0-dev"
+
+# These dependencies are used for the node template's RPCs
+jsonrpsee = { version = "0.15.1", features = ["server"] }
+sc-rpc = "4.0.0-dev" 
+sp-api = "4.0.0-dev"
+sc-rpc-api = "0.10.0-dev"
+sp-blockchain = "4.0.0-dev"
+sp-block-builder =  "4.0.0-dev" 
+sc-basic-authorship = "0.10.0-dev" 
+substrate-frame-rpc-system = "4.0.0-dev" 
+pallet-transaction-payment-rpc = "4.0.0-dev"
+
+# These dependencies are used for runtime benchmarking
+frame-benchmarking = "4.0.0-dev"
+frame-benchmarking-cli = "4.0.0-dev"
+
+# Local Dependencies
+node-template-runtime = { version = "4.0.0-dev", path = "../runtime" }
+
+# CLI-specific dependencies
+try-runtime-cli = { version = "0.10.0-dev", optional = true }
+
+[build-dependencies]
+substrate-build-script-utils = "3.0.0"
+
+[features]
+default = []
+runtime-benchmarks = ["node-template-runtime/runtime-benchmarks"]
+# Enable features that allow the runtime to be tried and debugged. Name might be subject to change
+# in the near future.
+try-runtime = ["node-template-runtime/try-runtime", "try-runtime-cli"]
