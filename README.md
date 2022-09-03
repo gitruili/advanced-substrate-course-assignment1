@@ -1,3 +1,9 @@
+### Run
+cargo test -p pallet-poe
+
+![test1](https://user-images.githubusercontent.com/8585779/188277731-f4ae43c4-d556-40e3-b5ba-681c15ac21e0.PNG)
+
+
 # Substrate Node Template
 
 [![Try on playground](https://img.shields.io/badge/Playground-Node_Template-brightgreen?logo=Parity%20Substrate)](https://docs.substrate.io/playground/) [![Matrix](https://img.shields.io/matrix/substrate-technical:matrix.org)](https://matrix.to/#/#substrate-technical:matrix.org)
